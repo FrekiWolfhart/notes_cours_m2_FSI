@@ -1,0 +1,72 @@
+\section{Introduction}
+La s\'ecurit\'e n'est pas seulement un probl\`eme technique. En effet, si une cl\'e priv\'ee devient publique, alors
+peu importe l'algorithme de chiffrage, il ne sera plus aussi r\'esistant car on pourra utiliser la cl\'e pour
+d\'echiffrer les messages chiffr\'es, ou pour usurper l'identit\'e de l'auteur.
+
+La s\'ecurisation des terminaux est toute aussi importante que la s\'ecurisation des terminaux, afin d'\'eviter:
+\begin{itemize}
+  \item les sniffeurd de claviers et chevaux de troie
+  \item la collecte de donn\'ees sans accord
+  \item les techniques TEMPEST, qui peuvent entra\^iner la collecte d'infos et de daat sans programmes externes
+  \item le vol et/ou la perte de diff\'erents moyens de stockage:
+  \begin{itemize}
+    \item disque dur
+    \item cl\'e USB
+    \item t\'el\'ephone
+    \item ets\dots
+  \end{itemize}
+  \item les techniques d'ing\'egnerie sociale
+  \item etc\dots
+\end{itemize}
+
+Il existe deux types de menaces:
+\begin{itemize}
+  \item les menaces involontaires, qui sont li\'ees \`a des accidents ou des erreurs, et qui sont li\'ees \`a la
+  fiabilit\'e et la qualit\'e
+  \item les menaces volontaires, qui sont li\'es \`a des attaques, et qui sont li\'ees \`a la s\'ecurit\'e
+\end{itemize}
+
+Lors du design de syst\`eme d'informations, on peux consid\'erer un accident tr\`s improbable comme inexistant.
+
+Il y a deux types d'attaques de r\'eseaux:
+\begin{itemize}
+  \item l'attaque passive, ou d'\'ecoute, qui consiste en un acc\`es de contenu dont on est pas destinataire ou
+  propri\'etaire, dont les sources peuvent \^etre:
+  \begin{itemize}
+    \item TCP/IP non s\'ecuris\'e, ce qui m\`ene \`a une vue int\'egrale des pacquets, ce qui permet une attaque du
+    protocole afin de devenir interm\'ediaire
+    \item un document publi\'e par erreur, qui peux \^etre trouv\'e sur internet
+    \item une violation des syst\`emes de contr\^ole d'acc\`es, qui peux \^etre d\^u \`a des mot de apsse faibles ou des
+    injections SQL
+    \item des \'ecoutes l\'egales
+  \end{itemize}
+  \item l'attaque active, qui consiste en une interception de contenu dont on est ni le propri\'etaire, ni le
+  destinataire, et peux permettre la modification des donn\'ees en plus de l'acc\`es, et dont la source peut \^etre:
+  \begin{itemize}
+    \item TCP/IP non s\'ecuris\'e, comme dans le point pr\'ec\'edent
+    \item une attaque sur des protocoles permettant le vol de la session
+  \end{itemize}
+\end{itemize}
+
+On peux se prot\'eger des attaques sur le r\'eseaux en appliquant de bonnes pratiques:
+\begin{itemize}
+  \item En int\'egrant la s\'ecurit\'e dans la conception:
+  \begin{itemize}
+    \item en v\'erifiants les besoins de chaque utilisateurs
+    \item en ne donnant pas aux utilisateurs plus de droits que requis pour leur travail
+  \end{itemize}
+  \item En ayant une bonne admininstration:
+  \begin{itemize}
+    \item les mises \`a jour permettent la correction d'erreurs et de bugs dans le code
+    \item le contr\^ole des acc\`es permet une meilleure gestion des droits serveurs et machines
+    \item la surveillance permet la v\'erification du syst\`eme et des utilisateurs
+    \item les audits permettent de tester le niveau de s\'ecurit\'e
+  \end{itemize}
+\end{itemize}
+
+Il y a diff\'erentes m\'ethodes de cryptage de donn\'ees, qui ont leur propres vuln\'erabilit\'es:
+\begin{itemize}
+  \item m\'ethode par substitution, qui est vuln\'erable \`a une attaque par fr\'equence, qui consiste \`a analyser la
+  fr\'equences des lettres pour d\'echiffrer le message
+  \item les m\'ethodes complexes, et param\'etr\'ees par cl\'es, qui sont solides
+\end{itemize}

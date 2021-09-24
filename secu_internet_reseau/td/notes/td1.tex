@@ -1,0 +1,33 @@
+\section{TD 1}
+\subsection*{Question 1}
+Il y a 7 r\`egles qui parlent de s\'ecurit\'e des syst\`emes et r\'eseaux, alors qu'il n'y en a que une qui parle de
+cryptographie.\\
+On peux donc en conclure qu'il est plus important de renforcer le syst\`eme que de chiffrer les donn\'ees.
+
+\subsection*{Question 2}
+Messages envoy\'es par A:
+\begin{itemize}
+  \item C$^{RSA}_{K_B}$(k)
+  \item C$^{AES}_k$(Q)
+  \item C$^{RSA}_{K'_A}$(H$^{SHA1}$(Q))
+\end{itemize}
+
+Messages envoy\'es par B:
+\begin{itemize}
+  \item C$^{AES}_k$(R)
+  \item C$^{RSA}_{K'_B}$(H$^{SHA1}$(R))
+\end{itemize}
+
+\subsection*{Question 3}
+Si C conna\^it la cl\'e priv\'ee de B avant la communication, les caract\'eristiques de s\'ecurit\'e compromises sont:
+\begin{itemize}
+  \item confidentialit\'e
+  \item authentification
+\end{itemize}
+
+\subsection*{Question 4}
+Si C ne conna\^it la cl\'e priv\'ee de b apr\`s la communication, les caract\'eristiques de s\'ecurit\'e compromises
+sont:
+\begin{itemize}
+  \item confidentialit\'e
+\end{itemize}
