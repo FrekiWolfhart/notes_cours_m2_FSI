@@ -1,0 +1,15 @@
+\section{TD 2}
+\subsection*{Question 1}
+C'est un document v\'erifiant qu'une clef publique appartient bel et bien \`a un utilisateur donn\'e.\\
+Le principe de v\'erification de certificat consiste \`a faire v\'erifier la validit\'e du certificat par une
+autorit\'e reconnue, en commen\c cant par v\'erifier la signature du certificat.\\
+Les primitives cryptographiques utilis\'ees sont les fonctions de hachage et le chiffrement par clef publique.
+\subsection*{Question 2}
+\subsubsection*{Jeu A}
+Le certificat A-2, qui est celui contenant la clef d'empreinte, est un certificat auto-sign\'e. Il a l'autorisation
+de signer des certificat, d\^u \`a l'argument CA:true. Cependant, on ne consid\`ere comme autorit\'e que le
+certificat A-1, et, A-2 n'\'etant pas sign\'e par A-1, on ne peux pas accepter la clef d'empreinte comme
+appartenant \`a l'utilisateur.
+\subsubsection*{Jeu B}
+Le certificat B-2 est sign\'e par un certificat inconnu. On ne peux donc pas accepter la clef d'empreinte comme
+appartenant \`a l'utilisateur.
