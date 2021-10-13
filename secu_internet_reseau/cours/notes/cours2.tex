@@ -1,0 +1,28 @@
+\section{Cours 2}
+Le plus grand probl\`eme des protocoles cryptographiques n'est pas le chiffrement, mais le partage s\'ecuris\'e des
+cl\'es.
+
+On peux faire un syst\`eme similaire au VPN sans protocoles cryptographiques, en utilisant un syst\`eme filiaire.
+
+L'envoi de mails via le protocole SMTP peux utiliser le protocole STARTSSL.
+
+Il y a deux moyens de s\'ecuriser des pacquets web:
+\begin{itemize}
+  \item AH: on peux lire l'information, mais on ne peux pas la modifier de l'ext\'erieur.
+  \item ESP: one ne peux ni lire ni modifier l'information de l'ext\'erieur.
+\end{itemize}
+Les en-t\^etes des deux protocoles sont similaires.
+
+Les RFC sont des protocoles internet standardis\'es.
+
+Afin de contrer les attaques sur l'int\'egrit\'e de la session, on peux hacher et signer les pr\'ec\'edents messages et
+les renvoyer vers le serveur, afin qu'il puisse v\'erifier que le contenu n'ai pas \'et\'e alt\'er\'e.
+
+La compression est suppos\'ee diminuer les r\'ep\'etitions, afin d'\'eviter les attaques l'utilisant.
+En plus, cela diminue la taille du pacquet.
+Mais, la taille du message compress\'e peux donner certaines informations sur les octets et bits du message initial.
+
+DHE: Deffie-Helmann Ephemeral
+Ephemeral: les cl\'es sont jet\'ees d\`es qu'elles ne sont plus utiles.
+
+UDP a une version de TLS qui est adapt\'ee afin de g\'erer le probl\`eme de pacquet qui se perd, et qui s'appelle DTLS.
