@@ -1,0 +1,91 @@
+\section{Cours 2}
+Un jeu de parit\'e est un ensemble G=(V,E,$\Omega$), avec:
+\begin{itemize}
+  \item V, des positions
+  \item E, des arr\^etes
+  \item $\Omega$, une fonction
+\end{itemize}
+Les positions du jeu de parit\'e peuvent apprtenir \`a un des deux joueurs.
+Joueur 1(aussi appel\'e Eve):
+\begin{itemize}
+  \item Poss\`ede les positions circulaires
+  \item Gagne si la plus grande priorit\'e vue infiniment souvent est paire
+\end{itemize}
+Joueur 2(aussi appel\'e Adam):
+\begin{itemize}
+  \item Poss\`ede les position carr\'ees
+  \item Gagne si la plus grande priorit\'e vue infiniment souvent est impaire
+\end{itemize}
+Une strat\'egie $\sigma$ est une fonction qui regarde l'historique du jeu. Elle est dite positionnelle si elle ne
+regarde pas le dit historique.\\
+Dans la partie $\pi$, si $\pi_1\in$V$_2$, alors $\pi_{i+1}$=$\sigma$($\pi$[ \,0,i] \,).\\
+\medskip
+\textbf{Th\'eor\`eme:}Si un joueur gagne dans G, il gagne avec une strat\'egie positionnelle.\\
+\medskip
+Algortihme de r\'esolution des jeu de parit\'e:\\
+Compl\'exit\'e $\Theta$(n$^d$):\\
+\begin{algorithm}
+  \caption{Algorithme de Lielonka}
+  \begin{algorithmic}
+  \STATE f$_1$(G,d)
+  \REPEAT
+    \STATE N$_d=$\{v$\in$V$\mid\Omega$(v)=d\}
+    \STATE G'=G$\backslash$Att$_1$(G, N$_d$)
+    \STATE W$_2$=f$_2$(G, d-1)
+    \STATE G=G$\backslash$Att$_2$(G,W$_2$)
+  \UNTIL{W$_2$=$\varnothing$}
+  \STATE return G
+  \end{algorithmic}
+\end{algorithm}
+\medskip
+Une variante des jeux de parit\'e sont les jeux \`a registres. En plus de jouer, \`a chaque tour, le joueur 1 range la
+valeur sortie dans un registre. Il existe k registres.\\
+Fonctionnement des registres:
+\begin{itemize}
+  \item mise \`a jour(le joueur 1 met \`a jour le registre i):
+  \begin{itemize}
+    \item j < i: r$_j$=0.
+    \item r$_i$= p(la valeur sortie)
+    \item j > i: r$_j$=max(r$_j$,p)
+  \end{itemize}
+  \item priorit\'e de sortie:
+  \begin{itemize}
+    \item 2i si max(r$_i$,p) est pair
+    \item 2i+1 sinon
+  \end{itemize}
+\end{itemize}
+Les conditions de victoire sont les m\^emes que pour les jeux de parit\'e.
+\medskip
+\textbf{Lemme:}Si le joueur 2 gagne G, il gagne G$_k$, $\forall$ k. Si le joueur 1 gagne G, $\exists$k tel que le
+joueur 1 gagne G$_k$.\\
+\textbf{Th\'eor\`eme:}Joueur 1 gagne G si et seulement si elle gagne G$_{log(n)+1}$. Par cons\'equent, J$_1$ gagne
+G$_{log(n)+1}\Rightarrow$J$_1$ gagne G.\\
+\textbf{Induction:}J$_1$ gagne G$_{log(n)+1}$ avec une strat\'egie telle que, si r$_k\geq$p est paire, alors il n'y a
+pas de sortie 2k+1.\\
+Cette strat\'egie ne fonctionne que si il n'y a un componant fortement connexe utilisant tout les registres. Dans ce
+cas, il faut un registre de plus pour cette strat\'egie.\\
+\textbf{Corollaire:} Algorithme 2$^{\Theta(log^3(n))}$: r\'esoudre G$_{log(n)+1}$ au lieu de G, et le nombre de
+priorit\'es est $\Theta$(log(n)).\\
+\medskip
+f$_1$(G,d,p$_2$,p$_1$). Un dominion est un ensemble tel que un joueur a une strat\'egie gagnante \`a partir du dominion
+et qui n'en sort pas.\\
+\medskip
+f$_1$ doit contenir tout les dominions J$_1$ de taille$\leq$p$_1$, et n'intersecte pas avec les dominions de J$_2$, de
+taille $\leq$p$_2$.\\
+f$_2$(G,d,p$_1$,p$_2$) existe aussi.\\
+\begin{algorithm}
+  \caption{Algorithme}
+  \begin{algorithmic}
+    \STATE f$_1$(G,d,p$_2$,p$_1$)
+    \IF{G=$\varnothing\vee$p$\leq$1}
+      \STATE return G
+    \ENDIF
+    \STATE G$_1$=f$_1$(G,d,p$_2$,$\lfloor\frac{p_1}{2}\rfloor$)
+    \STATE Nd=\{v$\mid\Omega$(v)=d\}
+    \STATE H=G$_i\backslash$Att$_1$(Nd,G)
+    \STATE W$_2$=f$_2$(H,d-1,p$_1$,p$_2$)
+    \STATE G$_2$=G$_1i\backslash$Att$_2$(W$_2$,G$_2$)
+    \STATE G$_3$=f$_1$(G$_2$,$\lambda$,p$_2$,$\lfloor\frac{p_1}{2}\rfloor$)
+    \STATE return G$_3$
+  \end{algorithmic}
+\end{algorithm}

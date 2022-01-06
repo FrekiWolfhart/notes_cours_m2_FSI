@@ -1,0 +1,72 @@
+\section{Cours 1}
+Le $\mu$-calculest une logique modale \`a points fixes.\\
+Symboles du $\mu$-calcul:
+\begin{itemize}
+  \item tt: vrai
+  \item ff: faux
+  \item $\wedge$: conjonction
+  \item $\vee$: disjonction
+  \item $\square$: universel(successeur toujours vrai)
+  \item $\Diamond$: existentiel(au moins un successeur vrai)
+  \item $\mu$X.$\varphi$: plus petit point fixe
+  \item $\nu$X.$\varphi$: plus grand point fixe
+\end{itemize}
+L'existentiel ne peux pas \^etre vrai si il n'existe pas de successeur \`a l'\'etat courrant.\\
+
+Formules importantes:
+\begin{itemize}
+  \item $\Diamond$tt: indique la pr\'esence d'au moins un successeur
+  \item $\square$ff: indique l'abscence de successeur
+  \item $\Diamond$ff: comme ff, toujours faux
+  \item $\square$tt: comme tt, toujours vrai
+\end{itemize}
+
+$\mu X^0.\varphi =\varphi[ \,\frac{ff}{X}] \,$.$\mu X^{0+1}.\varphi =\varphi[ \,\frac{\mu X^0.\varphi}{X}] \,$.$\lfloor\lceil\mu X.\varphi\rceil\rfloor =\bigcup_{i=\mathbb{N}}\mu X^i.\varphi$
+\medskip
+$$\mu X^0.a\vee\Diamond X=a\vee\Diamond ff=a$$
+$$\mu X^1.a\vee\Diamond X=a\vee\Diamond a$$
+$$\mu X^2.a\vee\Diamond X=a\vee\Diamond(av\Diamond a)$$
+Donc, $\mu$X$^i$.a$\vee\Diamond$X $\rightarrow$ $\exists$ a dans au plus i pas.\\
+Le plus petit point fixe dit donc qu'il existe un a accessible, sans pr\'eciser quand.
+$$\mu X^0.a\wedge\square X=a\wedge\square ff$$
+$$\mu X^1.a\wedge\square X=a\wedge(a\wedge\square ff)$$
+$\mu$X$^i$.a$\wedge\square$X: a est vrai jusqu'\`a la profondeur i.\\
+$\mu$X$^i$.a$\wedge\square$X=$\square$a, et tout les chemins sont finis.\\
+$\nu X^0.\varphi=[ \,\frac{tt}{X}] \,$.$\nu X^1.\varphi=[ \,\frac{\nu X^0\varphi}{X}] \,$.$\lfloor\lceil\nu
+X.\varphi\rceil\rfloor=\bigcap_{i\in\mathbb{N}}\nu X^i.\varphi$
+$$\varphi=\nu X;a\wedge\Diamond X$$
+$$\varphi^0=a\wedge\Diamond tt$$
+$$\varphi^1=a\wedge\Diamond(a\wedge\Diamond tt)$$
+$$\varphi^2=a\wedge\Diamond(a\wedge\Diamond(a\wedge\Diamond tt))$$
+$\varphi^i$:$\exists$ un chemin de longueur i + 1, ayant un successeur, $\wedge\square$a.
+J'ai un chemn infini avec des a partout.
+\medskip
+$$\varphi=\nu X;a\wedge\square X$$
+$$\varphi^0=a\wedge tt$$
+$$\varphi^1= a\wedge\square(a\square tt)$$
+$\varphi^i$: a est vrai pendant i pas.
+Donc, $\varphi$: a est toujours vrai.
+\medskip
+Quelques formules:
+\begin{itemize}
+  \item $\mu$X.$\square$X: indique que tout chemin se termine, car la formule finira toujours par $\square$ff, qui est
+  l'abscence de successeur
+  \item $\mu$X.($\Diamond$X)$\vee$($\nu$Ya$\wedge$.$\square$Y):Il existe une partie accessible o\`u a est toujours
+  vrai.
+  \item $\nu$Y.($\square$Y)$\wedge$($\mu$X.a$\vee\Diamond$X): Il existe toujours un a accessible.
+  \item
+  $\nu$Y.($\square$Y)$\wedge$($\neg$req$\vee$($\mu$X.ack$\vee$($\square$X$\wedge\Diamond$X))):
+  si on voit un req, il y aura toujours un ack dans le futur.
+  \item $\nu$X.$\mu$Y.$\Diamond$Y$\vee$(a$\wedge\Diamond$X): $\exists$ un chemin avec a infiniment souvent
+  pr\'esent.
+  \item $\mu$X.$\nu$Y.($\square$Y$\wedge\neg$a)$\vee$a$\wedge\square$X: $\exists$ un nombre fini de a pour toute
+  ex\'ecution.
+\end{itemize}
+\medskip
+Un jeu de parit\'e r\'eponds \`a la question: Si j'ai un graphe, est-ce que la formule est vraie dedans?\\
+Un jeu de parit\'e peux cr\'eer deux types de cycles avec les points forts, qui sont nomm\'es en fonction du gagnant
+lorsqu'on entre dans le cycle; Ils sont:
+\begin{enumerate}
+  \item cycle $\mu$-perdant
+  \item cycle $\nu$-gagnant
+\end{enumerate}
