@@ -1,0 +1,77 @@
+\section{Cours 3}
+Les probl\`emes de synth\`ese sont une famille de probl\`emes g\'en\'eriques dont la recherche a \'et\'e initi\'ee
+par Church en 1957. Cette famille introduit un champ de recherche vari\'ee, qui est partie \`a la base de la th\'eorie
+algorithmique de jeux.\\
+Ce sont des probl\`emes qui sont, en g\'en\'eral, difficiles ou insolubles. On peux donc se damnder quand peux-t-on
+les r\'esoudre, et avec quelle compl\'exit\'e.\\
+\medskip
+Soit R $\subseteq$ X$\times$Y, une relation, et soit f: X$\rightarrow$Y, une fonction partielle. f uniformise
+R si:
+\begin{itemize}
+  \item domaine(f)=domaine(R).
+  \item $\forall$x$\in$domaine(R), (x,f(x))$\in$R.
+\end{itemize}
+On peux aussi dire que f est une fonction de choix pour R(nom moins utilis\'e).\\
+\medskip
+Soit S, un formalisme de relations X$\times$Y.\\
+Soit P, un formalisme de fonctions de X$\rightarrow$Y.\\
+\begin{algorithm}
+  \caption{Probl\`eme de P-S synth\`ese}
+  \begin{algorithmic}
+    \REQUIRE Une relation R donn\'ee dans S(R appel\'ee sp\'ecification)
+    \ENSURE Produire, pour un algo, une fonction f donn\'ee dans P(f appel\'ee programme), telle que f
+    uniformise R
+    \STATE R d\'esigne la paire (input,output) consid\'er\'ees comme acceptables.
+    \STATE f d\'esigne le programme qui assigne \`a chaque input un output acceptable.
+  \end{algorithmic}
+\end{algorithm}
+
+Pour d\'efinir des sp\'ecifications, on utilise MSO(logique pour les sp\'ecifications) sur A$\times$B.\\
+Si on a u, un mot infini sur A, et v, un mot infini sur B, on note u$\otimes$v, un mot infini sur
+(A,B)$^\omega$.\\
+A$_a$(x)=$\bigvee_{b\in B}$(a,b)(x). B$_b$(x)=$\bigvee_{a\in A}$(a,b)(x).\\
+Le formalisme utilis\'e pour les programmes est un automate fini d\'eterministe et qui, en plus de lire des
+lettres, va produire des lettres.\\
+Pour les sp\'ecification, on utilise la logique MSO, pour les programmes, on utilise les machines de Mealy.\\
+Deux points pour un programme tr\`es simple(comme une machine de Mealy):
+\begin{enumerate}
+  \item R\'eactif: chaque entr\'e produit une sortie
+  \item M\'emoire finie
+\end{enumerate}
+\medskip
+Compl\'xit\'e non-\'el\'ementaire: compl\'exit\'e qui est une exponentielle infinie non terminale.\\
+Complexit\'e tower: complexit\'e non-\'el\'ementaire qui poss\`ede n exponentielles, n \'etant le nombre
+d\'entr\'ees.
+\begin{algorithm}
+  \caption{Probl\`eme de synth\`ese de Church( compl\'exit\'e tower)}
+  \begin{algorithmic}
+    \REQUIRE formule MSO qui d\'efinit une sp\'ecification R
+    \ENSURE une machine de Mealy qui d\'efinit f, tel que f uniformise R
+  \end{algorithmic}
+\end{algorithm}
+R\'esolution du probl\`eme de Church:
+\begin{enumerate}
+  \item Passer de la formule logique MSO \`a l'automate fini.
+  \item Passer des automates aux jeux.
+  \item Jeux de Muller.
+  \item Jeux de parit\'e.
+\end{enumerate}
+On peux voir une relation R$\subseteq$A$^\omega\times$B$^\omega$ comme un jeu infini entre deux joueurs: J$_1$ et
+J$_2$.\\
+J$_1$ joue des lettres de A, J$_2$ joue des lettres de B. Ils jouent tour \`a tour et J$_1$ commence.\\
+Qui gagne?
+\begin{enumerate}
+  \item Quand le mot ne satisfait pas la sp\'ecification.
+  \item Quand le mot satisfait la sp\'ecification.
+\end{enumerate}
+\medskip
+\textbf{Th\'eor\`eme:} Un langage L$\subseteq\Sigma^\omega$ est d\'efinissable en MSO si et seulement si il
+est reconnu par un authomate de Muller/B$\ddot{u}$chi d\'eterministe.\\
+Automate de B$\ddot{u}$chi: A=(Q,$\Sigma$,$\delta$,q$_0$,F):
+\begin{itemize}
+  \item Q: ensemble fini d'\'etats
+  \item $\Sigma$: alphabet
+  \item $\delta\subseteq$Q$\times\Sigma\times$Q
+  \item q$_0\in$Q: \'etat initial
+  \item F$\subseteq$Q ensemble des \'etats finaux
+\end{itemize}
