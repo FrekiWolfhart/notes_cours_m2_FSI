@@ -75,3 +75,76 @@ Automate de B$\ddot{u}$chi: A=(Q,$\Sigma$,$\delta$,q$_0$,F):
   \item q$_0\in$Q: \'etat initial
   \item F$\subseteq$Q ensemble des \'etats finaux
 \end{itemize}
+\medskip
+Automate de Muller d\'eterministe: A=(Q,$\Sigma$,$\delta$,q$_0$,F):
+\begin{itemize}
+  \item Q: ensemble fini d\'etats
+  \item $\Sigma$: alphabet fini
+  \item $\delta$: Q$\times\Sigma\rightarrow$Q
+  \item q$_0\in$Q
+  \item F$\subseteq$P(Q)$\leftrightarrow$Ensemble des parties de Q
+\end{itemize}
+On regarde l'ensemble d\'etats qui apparait infiniment souvent, et on se demande si il est acceptant ou non.
+L'ensemble d'\'etats est acceptant si il respecte la condition de Muller.
+\medskip
+\begin{enumerate}
+  \item On transforme une formule $\varphi$ MSO en un automate de Muller A$_\varphi$ qui reconnait le m\^eme
+  langage sur A$\times$B.
+\end{enumerate}
+\medskip
+\textbf{D\'efinition}: Un jeu de Muller est un jeu \`a deux joueurs sur un graphe (fini). L'ensemble des sommets du
+graphe est partitionn\'e entre les deux joueurs. Le joueur 2 gagne si la suite des sommets visit\'es lors de la
+partie satisfait une condition de Muller donn\'ee.\\
+\textbf{Propri\'et\'e}: Le joueur 2 a une strat\'egie gagnante \`a m\'emoire finie sur le jeu de Muller
+B$_\varphi$ si et suelement si le probl\`eme de synth\`ese a une solution.
+\medskip
+\textbf{Lemme}: Tout jeu de Muller est \'equivalent \`a un jeu de parit\'e.\\
+\textbf{Lemme}: Tout jeu de parit\'e admet une strat\'egie gagnante positionnelle pour un des deux joueurs.
+\medskip
+\textbf{Proposition}: Tout automate de Muller d\'eterministe est \'equivalent \`a un automate de parit\'e
+d\'eterministe.
+\medskip
+Automate de parit\'e d\'eterministe: A=(Q,$\Sigma$,$\delta$,q$_0$,$\pi$):
+\begin{itemize}
+  \item Q: ensemble des \'etats finis
+  \item $\Sigma$: alphabet fini
+  \item $\delta$: Q$\times\Sigma\rightarrow$Q
+  \item q$_0\in$Q
+  \item $\pi$: Q$\rightarrow\mathbb{N}$
+\end{itemize}
+\begin{itemize}
+  \item Un automate de parit\'e est un cas particulier d'un automate de Muller.
+  \item Un automate de B$\ddots{u}$chi est un cas particulier d'un automate de parit\'e:
+  \begin{itemize}
+    \item \'etats finaux$\rightarrow$0
+    \item \'etats initiaux$\rightarrow$1
+  \end{itemize}
+\end{itemize}
+\medskip
+\textbf{Lemme}: $\forall$ alphabet $\Sigma$, $\exists$ un automate d\'eterministe avec un ensemble d\'etats Q
+totalement ordonn\'e et une fonction y:Q$\rightarrow$P($\Sigma$) ayant la propri\'et\'e suivante: $\forall$ mot
+d'entr\'ee, l'ensemble des lettres apparaissant infiniment souvent est obtenu en appliquant y au plus petit \'etat
+apparaissant infiniment souvent.
+\medskip
+\textbf{Proposition}: Le probl\`eme de Church a une solution $\Leftrightarrow$ J2 a une strat\'egie
+gagnante pour un jeu de parit\'e \`a m\'emoire finie.\\
+\textbf{Th\'eor\`eme( B$\ddots{u}$chi-Landueben 1969)}: J2 a une strat\'egie gagnante $\leftrightarrow$ J2 a une
+strat\'egie gagnante positionnelle. Un des deux joueurs \`a une strat\'egie gagnante positionnelle.
+\medskip
+Dans un jeu de parit\'e, les r\^oles de J1 et de J2 sont symm\'etriques: si on augmente de 1 toutes les priorit\'es, les
+r\^ole ssont \'echang\'es.\\
+\textbf{D\'efinition}: Soit X, un ensemble de positions dans un jeu. On d\'efinit l'attracteur de X pour le joueur
+J$_i$, i$\in${ \,1, 2} \, par:
+\begin{itemize}
+  \item X$_0$=X
+  \item X$_{K+1}$=X$_K\cup$Y$_K\cup$Z$_K$
+  \begin{itemize}
+    \item Y$_K$: toutes les positions o\`u J$_i$ a une transition vers X$_K$
+    \item Z$_K$: toutes les positions o\`u l'adversaire de J$_i$ n'a que des transitions vers X$_K$.
+  \end{itemize}
+\end{itemize}
+\medskip
+\textbf{Cas de base de l'induction}: Une seule priorit\'e utilis\'ee. Sans perte de g\'en\'eralit\'e, on suppose que la
+priorit\'e est 1. Dans ce cas, J2 gagne si J1 est bloqu\'e.\\
+On d\'efinit X comme le J2-attracteur de l'ensemble vide. Depuis X, J2 a une strat\'egie positionnelle ganante. Hors
+de X, J1 a une strat\'egie positionnelle gagnante.
